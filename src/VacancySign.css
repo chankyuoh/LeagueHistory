@@ -1,0 +1,14 @@
+.para {
+  color:red;
+  background-color:blue;
+}
+
+.para-green {
+  color:green;
+  background-color:white;
+}
+
+.para-normal {
+  color:black;
+  background-color:white;
+}
