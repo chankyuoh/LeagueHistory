@@ -5,5 +5,5 @@ import VacancySign from './VacancySign'
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
-ReactDOM.render(<VacancySign className="vacant" isVacant='true' />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import MatchList from './MatchList'
 
 class App extends Component {
   render() {
@@ -11,8 +12,9 @@ class App extends Component {
           <h2>Welcome to League History</h2>
         </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          Here is the list of matches, with people you've played with
         </p>
+        <MatchList className="vacant" isVacant='true'/>
       </div>
     );
   }
