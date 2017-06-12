@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Request from 'superagent';
-
+import './Match.css';
+import { Table } from 'react-bootstrap';
 
 class Match extends Component {
   constructor() {
@@ -28,22 +29,26 @@ class Match extends Component {
 
     let url = "https://na1.api.riotgames.com/lol/match/v3/matches/"+this.props.game + "?api_key=d8061f4f-984d-46ac-8607-ed56be8f8a84";
     Request.get(url).then((response2) => {
-      var gameData= JSON.parse(response2['text']);
-      var team1 = [];
-      var team2 = [];
+      let gameData= JSON.parse(response2['text']);
+      let team1 = [];
+      let team2 = [];
+      console.log(gameData);
       for(let i = 0; i < 5; i++) {
-        this.state.team1.push(gameData.participantIdentities[i].player.summonerName);
+        this.setState({
+          team1:[...this.state.team1,gameData.participantIdentities[i].player.summonerName],
+        });
       }
       for(let j = 5; j < 10 ; j++) {
-        this.state.team2.push(gameData.participantIdentities[j].player.summonerName);
-      }
-      console.log(gameData);
+        this.setState({
+          team2:[...this.state.team2,gameData.participantIdentities[j].player.summonerName],
+        })
+      };
 
     });
   }
 
   displayTeam() {
-    var res = "";
+    let res = "";
     for (let i = 0; i < this.state.team1.length; i++) {
       res += this.state.team1[i];
       res += "\n";
@@ -57,21 +62,65 @@ class Match extends Component {
   }
 
     render() {
-      var playerList1 = this.state.team1.map(function(name) {
-        return <li>{name}</li>;
-      })
+      let playerList1 = this.state.team1.map(function(name) {
+        return <tr><td>{name}</td></tr>;
+      });
 
-      var playerList2 = this.state.team2.map(function(name2) {
-        return <li>{name2}</li>;
-      })
+      let playerList2 = this.state.team2.map(function(name2) {
+        return <tr><td>{name2}</td></tr>;
+      });
+      const tableInstance = (
+        <Table striped bordered condensed hover>
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Player Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>1</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td colSpan="2">Larry the Bird</td>
+            <td>@twitter</td>
+          </tr>
+          </tbody>
+        </Table>
+      );
       return (
-        <div>
-          <h3>{this.state.champName}</h3>
-          <p>Match {this.props.game}</p>
-          <div><p>{this.displayTeam()}</p></div>
-          <ul>{playerList1}</ul>
-          <hr></hr>
-          <ul>{playerList2}</ul>
+        <div id="wrapper">
+          <h3>You Played: {this.state.champName}</h3>
+          <div id="first">
+            <p>Team 1:</p>
+            <Table striped bordered condensed hover>
+              <thead>
+              <tr>
+                <th>Player Name</th>
+              </tr>
+              </thead>
+              <tbody>
+              {playerList1}
+              </tbody>
+            </Table>
+          </div>
+          <div id="second">
+            <p>Team 2:</p>
+            {playerList2}
+          </div>
+
         </div>
       )
     }

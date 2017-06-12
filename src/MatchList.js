@@ -42,8 +42,8 @@ class MatchList extends Component {
   renderRecentMatches() {
     while(this.state.games != 'loading') {
       var matches = [];
-      console.log(this.state.games.matches);
-      for (var i = 0; i < 9; i++) {
+      //console.log(this.state.games.matches);
+      for (var i = 0; i < 20; i++) {
         if(this.state.games.matches[i].queue == 420) {
           matches.push(<Match key={i} game={this.state.games.matches[i].gameId} champ={this.state.games.matches[i].champion}/>);
         }
@@ -55,7 +55,7 @@ class MatchList extends Component {
   }
 
   render() {
-    var status = "Neolucid"
+    var status = "Acerabbit"
     return (
       <div>
         <div className="status">{status}</div>
