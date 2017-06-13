@@ -61,9 +61,13 @@ class MatchList extends Component {
         <div className="status">{status}</div>
         <br></br>
         <hr></hr>
+        <div>
+          Hello
+        </div>
         <div className="board-row">
           {this.renderRecentMatches()}
         </div>
+
       </div>
       );
   }

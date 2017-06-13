@@ -1,5 +1,6 @@
 #wrapper {
-    width: 500px;
+    margin: auto;
+    width: 610px;
     border: 1px solid black;
     overflow: hidden; /* will contain if #first is longer than #second */
 }
@@ -9,6 +10,11 @@
     border: 1px solid red;
 }
 #second {
+    width: 300px;
     border: 1px solid green;
     overflow: hidden; /* if you don't want #second to wrap below #first */
+}
+
+#tableTitle {
+    text-align: center;
 }

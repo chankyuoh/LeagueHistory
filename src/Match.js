@@ -104,11 +104,10 @@ class Match extends Component {
         <div id="wrapper">
           <h3>You Played: {this.state.champName}</h3>
           <div id="first">
-            <p>Team 1:</p>
             <Table striped bordered condensed hover>
               <thead>
               <tr>
-                <th>Player Name</th>
+                <th id="tableTitle">Team 1</th>
               </tr>
               </thead>
               <tbody>
@@ -117,8 +116,16 @@ class Match extends Component {
             </Table>
           </div>
           <div id="second">
-            <p>Team 2:</p>
-            {playerList2}
+            <Table striped bordered condensed hover>
+              <thead>
+              <tr>
+                <th id="tableTitle">Team 2</th>
+              </tr>
+              </thead>
+              <tbody>
+              {playerList2}
+              </tbody>
+            </Table>
           </div>
 
         </div>
