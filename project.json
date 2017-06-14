@@ -1,0 +1,8 @@
+{
+  "name": "apex",
+  "description": "apex league history",
+  "memory": 128,
+  "timeout": 5,
+  "role": "arn:aws:iam::859830751930:role/apex_lambda_function",
+  "environment": {}
+}
